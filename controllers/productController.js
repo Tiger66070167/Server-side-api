@@ -4,8 +4,10 @@ const productController = {
   // Get all products
   getAllProducts: (req, res) => {
     product.getAllProducts((err, results) => {
-      if (err) return res.status(500).json({ error: err.message });
-      res.json(results);
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+      res.render('productView', { products: results });
     });
   },
 
